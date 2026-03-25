@@ -79,6 +79,20 @@ export function useMonitorWs() {
           return next;
         });
         break;
+
+      case 'command_result':
+        // list_scenarios 응답 시 해당 클라이언트의 scenarios 갱신
+        if (msg.result?.action === 'list_scenarios' && msg.result?.scenarios) {
+          setClients(prev => {
+            const next = new Map(prev);
+            const existing = next.get(msg.client_id);
+            if (existing) {
+              next.set(msg.client_id, { ...existing, scenarios: msg.result.scenarios });
+            }
+            return next;
+          });
+        }
+        break;
     }
   }, []);
 
