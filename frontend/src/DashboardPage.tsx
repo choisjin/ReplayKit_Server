@@ -98,6 +98,12 @@ function PlaybackCard({ playback }: { playback: PlaybackProgress }) {
           </Col>
         </Row>
       )}
+
+      {playback.error_message && (
+        <div style={{ marginTop: 8, padding: '4px 8px', background: '#2a1215', border: '1px solid #58181c', borderRadius: 4 }}>
+          <Text type="danger" style={{ fontSize: 12 }}>{playback.error_message}</Text>
+        </div>
+      )}
     </div>
   );
 }

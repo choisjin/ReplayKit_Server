@@ -11,11 +11,12 @@ export interface PlaybackProgress {
   total_cycles: number;
   current_step: number;
   total_steps: number;
-  status: string; // idle, running, paused, stopped
+  status: string; // idle, running, paused, stopped, error
   passed: number;
   failed: number;
   warning: number;
   error: number;
+  error_message?: string;
 }
 
 export interface ClientInfo {
